@@ -13,16 +13,25 @@ public class Stack {
 
     // add item to stck
     public void push(int data) {
+      if(isFull()) {
+        throw new RuntimeException("Stack is full");
+      }
         array[++top] = data;
     }
 
     // get and remove item from stack
     public int pop() {
-        return array[y--];
+      if(isEmpty()) {
+        throw new RuntimeException("Stack is empty");
+      }
+        return array[top--];
     }
 
     // get item on top of stack
     public int peek() {
+      if(isEmpty()) {
+        throw new RuntimeException("Stack is empty");
+      }
         return array[top];
     }
 
