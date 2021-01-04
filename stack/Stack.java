@@ -1,3 +1,4 @@
+package stack;
 public class Stack {
 
     private int array[];
@@ -36,12 +37,12 @@ public class Stack {
     }
 
     // check if stack is empty
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return top == -1;
     }
 
     // check is stack is full
-    private boolean isFull() {
+    public boolean isFull() {
         return top == capacity - 1;
     }
 
