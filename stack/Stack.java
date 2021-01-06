@@ -1,49 +1,39 @@
 package stack;
-public class Stack {
 
-    private int array[];
+public class Stack<T> {
+
+    private int size;
     private int top;
-    private int capacity;
+    private Object[] stack;
 
-    // Initialize stack
-    public Stack(int capacity) {
-        this.array = new int[capacity];
-        this.capacity = capacity;
+    public Pile(int size) {
+        stack = new Object[size];
+        this.size = size;
         this.top = -1;
     }
 
-    // add item to stck
-    public void push(int data) {
-      if(isFull()) {
-        throw new RuntimeException("Stack is full");
-      }
-        array[++top] = data;
+    public T Pop() {
+        if (isEmpty())
+            throw new RuntimeException("Stack is empty");
+        return (T) stack[top--];
     }
 
-    // get and remove item from stack
-    public int pop() {
-      if(isEmpty()) {
-        throw new RuntimeException("Stack is empty");
-      }
-        return array[top--];
+    public void Push(Object item) {
+        if (top == size - 1)
+            throw new RuntimeException("Stack is full");
+        stack[++top] = item;
     }
 
-    // get item on top of stack
-    public int peek() {
-      if(isEmpty()) {
-        throw new RuntimeException("Stack is empty");
-      }
-        return array[top];
-    }
-
-    // check if stack is empty
     public boolean isEmpty() {
         return top == -1;
     }
 
-    // check is stack is full
-    public boolean isFull() {
-        return top == capacity - 1;
+    public int size() {
+        return size;
     }
 
+    public void erase() {
+        top = -1;
+        size = 0;
+    }
 }
